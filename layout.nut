@@ -47,7 +47,7 @@ class UserConfig {
   </ label="--------    Game Description    --------", help="Game Description", order=36 /> uct6="Select Below";
    </ label="Select Game Description Text Mode", help="Select Game Description Text Mode", options="Right,Popup,Off", order=37 /> select_description="Off";
     </ label="--------    Cart Art Animation Otions     --------", help="Show or hide additional images", order=38 /> uct7="Select Below"
-   </ label="Enable System Image", help="Enable System Image Art", options="Yes,No", order=39 /> enable_systemimage="No";
+   </ label="Enable System Image", help="Enable System Image Art", options="Yes,No", order=39 /> enable_systemimage="Yes";
       </ label="Enable Character Image", help="Enable Character Image Art", options="Yes,No", order=39 /> enable_characterimage="No";
  </ label="--------    Cart Art Animation Otions     --------", help="Show or hide additional images", order=40 /> uct8="Select Below"
    </ label="Enable Cart Art", help="Enable Cart Art", options="Yes,No", order=41 /> enable_bigart="Yes";
