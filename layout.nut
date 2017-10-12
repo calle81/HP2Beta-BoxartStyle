@@ -9,7 +9,7 @@
 
 class UserConfig {
 </ label="--------  HyperPie Main Menu Option  --------", help="Brought to you by Project HyperPie", order=1 /> uct1="Select Below";
-   </ label="Select or Disable Background Image", help="Select theme background", options="Solid, Per System,Per Title,City Lights, Pixel Skyline, Pixel Dojo, None", order=2 /> enable_bg="Solid"; 
+   </ label="Select or Disable Background Image", help="Select theme background", options="Per System,Per Title,City Lights, Pixel Skyline, Pixel Dojo, Neon, Flyer ,None", order=2 /> enable_bg="Flyer"; 
     </ label="Enable Title", help="Enable Title", options="Yes, No", order=2 /> enable_title="Yes";    
     </ label="Select or Disable Overlay Image", help="Select theme overlay", options="Snazzy, Snazzy On Top, Off", order=2 /> enable_overlay="Off"; 
 	</ label="Select Overlay Opacity", help="Select theme overlay opacity between 50-255", options="50, 100, 150, 200, 255", order=2 /> overlay_opacity="100";
@@ -90,6 +90,7 @@ am_version_check.visible = false
 // modules
 fe.load_module("fade");
 fe.load_module( "animate");
+fe.load_module( "pan-and-scan" );
 fe.do_nut("nuts/ryb2rgb.nut")
 fe.do_nut("nuts/animate.nut")
 fe.do_nut("nuts/genre.nut")
@@ -189,7 +190,32 @@ try {	wheel_fade_ms = my_config["wheel_fade_ms"].tointeger(); } catch ( e ) { }
 // Background Art 
 // This section will display the two different background art 
 // based up on the layout option choice
+if ( my_config["enable_bg"] == "Flyer")
+{
+local bgart = PanAndScanArt( "flyer", 0, 0, flw, flh);
+bgart.trigger = Transition.EndNavigation;
+bgart.preserve_aspect_ratio = false;
+bgart.set_fit_or_fill("fill");
+bgart.set_anchor(::Anchor.Center);
+bgart.set_zoom(4.5, 0.00008);
+bgart.set_animate(::AnimateType.Bounce, 0.50, 0.50)
+bgart.set_randomize_on_transition(true);
+bgart.set_start_scale(1.1);
+ local alpha_cfg = {
+    when = Transition.ToNewSelection,
+    property = "alpha",
+    start = 0,
+    end = 200,
+    time = 3000
+}
+animation.add( PropertyAnimation( bgart, alpha_cfg ) );
+}
 
+if ( my_config["enable_bg"] == "Flyer") 
+{
+local b_art = fe.add_artwork("flyer", 0, 0, flw, flh );
+b_art.alpha=255;
+}
 if ( my_config["enable_bg"] == "City Lights") 
 {
 local b_art = fe.add_image("backgrounds/City Lights.png", 0, 0, flw, flh );
@@ -224,23 +250,26 @@ if ( my_config["enable_bg"] == "Per Title")
 local b_art = fe.add_image("backgrounds/[Title].png", 0, 0, flw, flh );
 b_art.alpha=255;
 }
-if ( my_config["enable_bg"] == "Solid") {
+//if ( my_config["enable_bg"] == "Solid") {
 // Snap Background
 local flx = ( fe.layout.width - layout_width ) / 2
 local fly = ( fe.layout.height - layout_height ) / 2
 local snapBackground = fe.add_image( "images/gradientV.png", flx, bth, flw - crw, flh - bth - bbh )
 snapBackground.set_rgb( bgRGB[0] * 0.6, bgRGB[1] * 0.6, bgRGB[2] * 0.6 )
+snapBackground.alpha=100;
 
  // Top Background
-local bannerTop = fe.add_text( "", flx, 0, flw, bth)
-bannerTop.set_bg_rgb( bgRGB[0], bgRGB[1], bgRGB[2] )
+local bannerTop = fe.add_image( "white.png", flx, 0, flw, bth)
+bannerTop.set_rgb( bgRGB[0], bgRGB[1], bgRGB[2] )
+bannerTop.alpha=200;
 
 // Bottom Background
-local bannerBottom = fe.add_text( "", flx, flh - bbh, flw, bbh)
-bannerBottom.set_bg_rgb( bgRGB[0], bgRGB[1], bgRGB[2] )
+local bannerBottom = fe.add_image( "white.png", flx, flh - bbh, flw, bbh)
+bannerBottom.set_rgb( bgRGB[0], bgRGB[1], bgRGB[2] )
+bannerBottom.alpha=200;
 local flx = fe.layout.width;
 local fly = fe.layout.height;
-}
+//}
 //Overlay Art
 if ( my_config["enable_overlay"] == "Snazzy") 
 {
