@@ -9,7 +9,7 @@
 
 class UserConfig {
 </ label="--------  HyperPie Main Menu Option  --------", help="Brought to you by Project HyperPie", order=1 /> uct1="Select Below";
-   </ label="Select or Disable Background Image", help="Select theme background", options="Per System,Per Title,City Lights, Pixel Skyline, Pixel Dojo, Neon, Flyer ,None", order=2 /> enable_bg="Flyer"; 
+   </ label="Select or Disable Background Image", help="Select theme background", options="Boxart, System Flyer, Per System,Per Title,City Lights, Pixel Skyline, Pixel Dojo, Neon, None", order=2 /> enable_bg="Boxart"; 
     </ label="Enable Title", help="Enable Title", options="Yes, No", order=2 /> enable_title="Yes";   
 	</ label="Enable Border Overlay", help="Enable Border Overlay", options="Yes,No", order=2 /> enable_border="Yes"; 	
     </ label="Select or Disable Overlay Image", help="Select theme overlay", options="Snazzy, Snazzy On Top, Off", order=2 /> enable_overlay="Off"; 
@@ -201,24 +201,29 @@ try {	wheel_fade_ms = my_config["wheel_fade_ms"].tointeger(); } catch ( e ) { }
 // Background Art 
 // This section will display the two different background art 
 // based up on the layout option choice
-if ( my_config["enable_bg"] == "Flyer")
+if ( my_config["enable_bg"] == "System Flyer" || "Boxart")
 {
 local bgart = PanAndScanImage( "../../menu-art/flyer/[DisplayName]", 0, 0, flw, flh);
-bgart.trigger = Transition.EndNavigation;
-bgart.preserve_aspect_ratio = false;
+//bgart.trigger = Transition.EndNavigation;
+bgart.preserve_aspect_ratio = true;
 bgart.set_fit_or_fill("fill");
 bgart.set_anchor(::Anchor.Center);
 bgart.set_zoom(4.5, 0.00008);
 bgart.set_animate(::AnimateType.Bounce, 0.50, 0.50)
-bgart.set_randomize_on_transition(true);
+bgart.set_randomize_on_transition(false);
 bgart.set_start_scale(1.1);
-
-}
-
-if ( my_config["enable_bg"] == "Flyer") 
+if ( my_config["enable_bg"] == "Boxart")
 {
-local b_art = fe.add_artwork("flyer", 0, 0, flw, flh );
-b_art.alpha=255;
+local bgart2 = PanAndScanArt( "flyer", 0, 0, flw, flh);
+//bgart.trigger = Transition.EndNavigation;
+bgart2.preserve_aspect_ratio = true;
+bgart2.set_fit_or_fill("fill");
+bgart2.set_anchor(::Anchor.Center);
+bgart2.set_zoom(4.5, 0.00008);
+bgart2.set_animate(::AnimateType.Bounce, 0.50, 0.50)
+bgart2.set_randomize_on_transition(false);
+bgart2.set_start_scale(1.1);
+}
 }
 if ( my_config["enable_bg"] == "City Lights") 
 {
