@@ -682,7 +682,7 @@ animation.add( PropertyAnimation ( cdart, cdart_rotationLoad ) );
 // Box Art Animation
 ///////////////////////////////////////////////////////////////////////////
 if ( my_config["enable_bigart2"] == "Yes" ){
-local bigart = fe.add_image ("systemimages/[DisplayName]", flx*0.0, fly*0.24, flw*0.16, flh*0.36);
+local bigart = fe.add_image ("../../menu-art/fanart/[DisplayName]", flx*0.0, fly*0.24, flw*0.16, flh*0.36);
 bigart.preserve_aspect_ratio = true;
 bigart.trigger = Transition.EndNavigation;
 
