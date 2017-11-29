@@ -12,7 +12,7 @@ class UserConfig {
 	</ label=" ", help="Brought to you by Project HyperPie", order=2 /> uct2=" ";
 	
 	</ label="GENERAL SETTINGS", help="Brought to you by Project HyperPie", order=3 /> uct3=" ";	
-	</ label="Background Image", help="Select theme background", options="Game Flyer Pan & Scan, System Flyer Pan & Scan, City Lights, Pixel Skyline, Grid Logos Dark Blue, Grid Logos Dark Grey, Grid Logos Green, Grid Logos Light Blue, Grid Logos Light Grey, Grid Logos Mid Blue, Grid Logos Mid Blue, Grid Logos Orange, Grid Logos Pink, Grid Logos Purple, Grid Logos Red, Grid Logos Turquoise, Grid Logos Yellow, Logos Dark Blue, Logos Dark Grey, Logos Green, Logos Light Blue, Logos Light Grey, Logos Light Turquoise, Logos Mid Blue, Logos Orange, Logos Pink, Logos Purple, Logos Red, Logos Turquoise, Logos Yellow, Mono Logos Blue, Mono Logos Black, Neon, None", order=4 /> enable_bg="Logos Light Grey";
+	</ label="Background Image", help="Select theme background", options="Game Flyer, System Flyer, City Lights, Pixel Skyline, Grid Logos Dark Blue, Grid Logos Dark Grey, Grid Logos Green, Grid Logos Light Blue, Grid Logos Light Grey, Grid Logos Mid Blue, Grid Logos Mid Blue, Grid Logos Orange, Grid Logos Pink, Grid Logos Purple, Grid Logos Red, Grid Logos Turquoise, Grid Logos Yellow, Logos Dark Blue, Logos Dark Grey, Logos Green, Logos Light Blue, Logos Light Grey, Logos Light Turquoise, Logos Mid Blue, Logos Orange, Logos Pink, Logos Purple, Logos Red, Logos Turquoise, Logos Yellow, Mono Logos Blue, Mono Logos Black, Neon, None", order=4 /> enable_bg="Logos Light Grey";
 	</ label="Background Image Scanline Overlay", help="Enable Background Image Scanline Overlay", options="Light, Medium, Dark, Diagonal, No", order=5 /> enable_backgroundoverlay="Light"; 
     </ label="Disable Video Sound", help="Disable Video Sound", options="Yes,No", order=6 /> enable_backgroundmusic="Yes";
     </ label="Title", help="Enable Title", options="Yes, No", order=7 /> enable_title="Yes";   
@@ -214,7 +214,7 @@ local bgMusic = fe.add_sound("bgMusic.mp3")
 // Background Art 
 /////////////////////
 
-if ( my_config["enable_bg"] == "System Flyer Pan & Scan" || my_config["enable_bg"] == "Game Flyer Pan & Scan")
+if ( my_config["enable_bg"] == "System Flyer" || my_config["enable_bg"] == "Game Flyer")
 {
 local bgart = PanAndScanImage( "../../menu-art/flyer/[DisplayName]", 0, 0, flw, flh);
 //bgart.trigger = Transition.EndNavigation;
