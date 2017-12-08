@@ -675,7 +675,7 @@ local last_nav = 0;
 local gtime = 0;
 local art_flag = false;
 
-local video = fe.add_image( fe.get_art("snap"),flx*0.3, fly*0.1, flw*0.4, flh*0.54 );  //Use add_image so the snap doesn't auto-update while navigating
+local video = fe.add_image( fe.get_art("snap"),flx*0.3, fly*0.08, flw*0.4, flh*0.6 );  //Use add_image so the snap doesn't auto-update while navigating
 
 if ( my_config["enable_backgroundmusic"] == "Yes") {
 local bgMusic = fe.add_sound("bgMusic.mp3")
@@ -1919,7 +1919,7 @@ fe.add_transition_callback( this, "on_transition" )
 
 function on_transition( ttype, var, ttime ) {
 	if( ttype == Transition.ToNewSelection) {
-	if ( my_config["enable_list_vertical"] == "List Box" ){
+	if ( my_config["enable_list_type"] == "List Box" ){
 			gameListBoxAnimX.to = flw + flx - crw - lbw
 			if ( glist_delay != 0 ) gameListBoxAnimX.hide( flw + flx - crw, fe.layout.time )
 			gameListBoxAnimA.to = 255
@@ -1942,7 +1942,14 @@ function on_transition( ttype, var, ttime ) {
 		update_artwork = true	
 		update_counter = 0
 
-
+		if ( glist_delay != 0 ) gameListBoxAnimX.hide( flw + flx - crw, fe.layout.time )
+		gameListBoxAnimA.from = 0
+		gameListBoxAnimA.to = 255
+		if ( glist_delay != 0 ) gameListBoxAnimA.hide( 0, fe.layout.time )
+		if ( glist_delay != 0 ) gameListBoxBackgroundAnimX.hide( flw + flx - crw, fe.layout.time )
+		gameListBoxBackgroundAnimA.from = 0
+		gameListBoxBackgroundAnimA.to = 255
+		if ( glist_delay != 0 ) gameListBoxBackgroundAnimA.hide( 0, fe.layout.time )
 		
 		if ( var < 0 ) {
 //			gameListBoxAnimX.from = flw + flx - crw - lbw * 2
@@ -1990,7 +1997,6 @@ function on_transition( ttype, var, ttime ) {
 	}
 	return false
 	}
-
 
 
 
